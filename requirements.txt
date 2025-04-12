@@ -1,0 +1,9 @@
+fastapi[all]
+uvicorn[standard]
+motor
+pydantic[email]
+python-dotenv
+passlib[bcrypt]
+python-jose[cryptography]
+httpx # For Google OAuth calls eventually
+pymongo # Motor dependency, sometimes needed explicitly
