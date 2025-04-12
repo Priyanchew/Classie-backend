@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<body>
+  <h3>Submit Assignment</h3>
+  <form id="submissionForm">
+    Student ID: <input name="studentId"><br>
+    Assignment ID: <input name="assignmentId"><br>
+    Version: <input name="version"><br>
+    Content: <textarea name="content"></textarea><br>
+    <button type="submit">Submit</button>
+  </form>
+
+  <script>
+    document.getElementById('submissionForm').onsubmit = async (e) => {
+      e.preventDefault();
+      const data = Object.fromEntries(new FormData(e.target));
+      const res = await fetch('http://localhost:5000/api/submit', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data)
+      });
+      const json = await res.json();
+      alert('Submitted! ' + JSON.stringify(json));
+    };
+  </script>
+</body>
+</html>
